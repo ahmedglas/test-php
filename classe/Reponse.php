@@ -3,8 +3,9 @@
 class Reponse{
 
     
-    private  $reponse ;
-     const BONNE_REPONSE ="bonne reponse";
+    public  $reponse ;
+     const BONNE_REPONSE = true;
+     const MAUVAISE_REPONSE = false;
      public  $bonne;
      
 
@@ -18,17 +19,19 @@ class Reponse{
       }
   }
 
-  public function __construct1($reponse) {
+  public function __construct1($reponse, $fail = Reponse::MAUVAISE_REPONSE) {
+    
     $this->reponse = $reponse;
-    $this->bonne ='False';
+    $this->bonne =$fail;
+    //$this->bonne='False'
 }
 
 public function __construct2($reponse, $reponse_bonne) {
   $this->reponse = $reponse;
   if ($reponse_bonne== Reponse::  BONNE_REPONSE){
-          $this->bonne='True';
+          $this->bonne= Reponse:: BONNE_REPONSE;
   }else {
-      $this->bonne ='False';
+      $this->bonne = Reponse::MAUVAISE_REPONSE;
   }
 }
 
@@ -53,8 +56,12 @@ public function __construct2($reponse, $reponse_bonne) {
     return $this->bonne;
   }
 
-  public function generer(){
-   //a faire 
+  public function generer($MD5_question){
+    echo "<div class=\"list-group-item\"   justify-content: center;\">";
+   
+    echo "<input type=\"checkbox\" name=\"" . $MD5_question. "[]\" value=\"".$this->getMd5()."\">";
+    echo "<label for=\"".$this->getMd5()."\">" . $this->reponse . "</label>";
+    echo "</div>";
 }
 
 

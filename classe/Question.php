@@ -34,7 +34,7 @@ class Question{
   }
 
  function set_Reponse($Reponse) { 
-    $this->reponse = $Reponse;
+    $this->reponse[] = $Reponse;
   }
 
 function ajouterReponse( $Reponse ) {
@@ -47,10 +47,19 @@ function ajouterReponse( $Reponse ) {
 
 public function generer(){
  
-    // a faire 
+
+  
+  echo "<div class=\"\">";
+        echo $this->question;
+        echo "</div>";
+        echo "<ul class=\"list-group list-group-item-action\" style=\"width: 100%; justify-content: center;\">";
+        foreach($this->reponse as $res){
+            $res->generer(md5($this->question));
  
 }
+echo "</ul>";
 
+}
 }
 
 
